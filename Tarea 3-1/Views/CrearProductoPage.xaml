@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tarea_3_1.Views.CrearProductoPage"
+             Title="Crear Producto">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+
+            <Label Text="Foto URL" FontSize="18" />
+            <Frame BorderColor="Gold" HeightRequest="120" WidthRequest="120" HorizontalOptions="Center" VerticalOptions="Center">
+                <Image x:Name="imagen" Source="{Binding Producto.Foto}" HorizontalOptions="Center" HeightRequest="100" WidthRequest="100" BackgroundColor="White" Aspect="AspectFill">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnImageTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Frame>
+
+            <Label Text="Nombre" FontSize="18" />
+            <Entry Text="{Binding Producto.Nombre}" Placeholder="Nombre del producto" />
+
+            <Label Text="Descripción" FontSize="18" />
+            <Entry Text="{Binding Producto.Descripción}" Placeholder="Descripción del producto" />
+
+            <Label Text="Precio" FontSize="18" />
+            <Entry Text="{Binding Producto.Precio, Mode=TwoWay}" Placeholder="Precio del producto" Keyboard="Numeric" />
+
+            <Button Text="Crear Producto" Command="{Binding CrearProductoCommand}" 
+                     BackgroundColor="#4CAF50"
+                     TextColor="White"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

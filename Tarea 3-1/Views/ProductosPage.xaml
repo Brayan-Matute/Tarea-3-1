@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tarea_3_1.Views.ProductosPage"
+             Title="Productos"
+             BackgroundColor="#F0F0F0">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10">
+                <Label Text="Lista de Productos" 
+                       FontSize="24" 
+                       FontAttributes="Bold" 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Center"
+                       Margin="0,10,0,20" 
+                       TextColor="Black"/>
+
+                <CollectionView ItemsSource="{Binding Productos}"
+                                SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem
+                                            Text="Actualizar"
+                                            BackgroundColor="Blue"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ActualizarProductoCommand}"
+                                            CommandParameter="{Binding .}" />
+                                        <SwipeItem
+                                            Text="Eliminar"
+                                            BackgroundColor="Red"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EliminarProductoCommand}"
+                                            CommandParameter="{Binding .}" />
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+
+                                <Frame Padding="10" 
+                                       Margin="5" 
+                                       BackgroundColor="White" 
+                                       CornerRadius="10" 
+                                       HasShadow="True">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="{Binding ImageSource}"
+                                               WidthRequest="100"
+                                               HeightRequest="100"
+                                               Aspect="AspectFill"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Center"
+                                               Margin="10" />
+                                        <StackLayout Orientation="Vertical"
+                                                     VerticalOptions="Center"
+                                                     Spacing="5">
+                                            <Label Text="{Binding Nombre}"
+                                                   FontSize="18"
+                                                   FontAttributes="Bold"
+                                                   TextColor="Black"/>
+                                            <Label Text="{Binding Descripción}"
+                                                   FontSize="14"
+                                                   TextColor="Black"
+                                                   LineBreakMode="WordWrap"
+                                                   MaxLines="3" 
+                                                   VerticalOptions="Start"/>
+                                            <Label Text="{Binding Precio, StringFormat='Precio: {0:C}'}"
+                                                   FontSize="16"
+                                                   FontAttributes="Bold"
+                                                   TextColor="#2C3E50"
+                                                   VerticalOptions="End"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </SwipeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

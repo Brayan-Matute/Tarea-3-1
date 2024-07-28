@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tarea_3_1.MainPage"
+             Title="Menú Principal"
+             BackgroundColor="#F0F0F0">
+
+    <VerticalStackLayout
+        Padding="30"
+        Spacing="20"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+
+        <Label Text="Gestión de Productos" 
+               FontSize="24" 
+               FontAttributes="Bold" 
+               HorizontalOptions="Center" 
+               VerticalOptions="Center"
+               TextColor="Black"/>
+
+        <Button
+            Text="Crear Producto"
+            Clicked="OnCrearProductoClicked"
+            HorizontalOptions="Fill"
+            BackgroundColor="#007AFF"
+            TextColor="White"
+            CornerRadius="10"
+            Padding="10"/>
+
+        <Button
+            Text="Ver Productos"
+            Clicked="OnVerProductosClicked"
+            HorizontalOptions="Fill"
+            BackgroundColor="#4CAF50"
+            TextColor="White"
+            CornerRadius="10"
+            Padding="10"/>
+
+        <Button
+            Text="Salir"
+            Clicked="OnSalirClicked"
+            HorizontalOptions="Fill"
+            BackgroundColor="#F44336"
+            TextColor="White"
+            CornerRadius="10"
+            Padding="10"/>
+    </VerticalStackLayout>
+</ContentPage>
