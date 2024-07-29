@@ -18,6 +18,7 @@ namespace Tarea_3_1.Services
         {
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri("https://tarea-3-1-c69c0-default-rtdb.firebaseio.com/");
+           /* _httpClient.BaseAddress = new Uri("https://pm2-g4-default-rtdb.firebaseio.com/");*/
         }
 
         public async Task<List<Producto>> ObtenerProductos()
@@ -71,7 +72,7 @@ namespace Tarea_3_1.Services
         }
 
 
-        public async Task ActualizarProducto(string id, Producto producto)
+        public async Task ActualizarProducto(string id, object producto)
         {
             var json = JsonConvert.SerializeObject(producto);
             var content = new StringContent(json, Encoding.UTF8, "application/json");

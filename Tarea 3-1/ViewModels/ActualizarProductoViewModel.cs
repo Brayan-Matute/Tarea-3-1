@@ -12,12 +12,12 @@ namespace Tarea_3_1.ViewModels
     public class ActualizarProductoViewModel : INotifyPropertyChanged
     {
         private readonly ProductoService _productoService;
-        private ProductoItemViewModel _producto;
+        private Producto _producto;
 
         public event PropertyChangedEventHandler PropertyChanged;
         public event Action LimpiarImagen;
 
-        public ProductoItemViewModel Producto
+        public Producto Producto
         {
             get { return _producto; }
             set
@@ -29,7 +29,7 @@ namespace Tarea_3_1.ViewModels
 
         public ICommand ActualizarProductoCommand { get; }
 
-        public ActualizarProductoViewModel(ProductoItemViewModel producto)
+        public ActualizarProductoViewModel(Producto producto)
         {
             _productoService = new ProductoService();
             Producto = producto;
@@ -40,7 +40,13 @@ namespace Tarea_3_1.ViewModels
         {
             if (Producto == null || string.IsNullOrEmpty(Producto.Id)) return;
 
-            await _productoService.ActualizarProducto(Producto.Id, Producto);
+            await _productoService.ActualizarProducto(Producto.Id, new
+            {
+                Producto.Nombre,
+                Producto.Descripción,
+                Producto.Precio,
+                Producto.Foto
+            });
 
             LimpiarImagen?.Invoke();
 
